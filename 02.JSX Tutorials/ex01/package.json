@@ -1,0 +1,30 @@
+{
+  "name": "ex01",
+  "version": "1.0.0",
+  "description": "ex01: 특징I HTML과의 차이점",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx webpack serve  --progress",
+    "build": "npx webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.24.7",
+    "@babel/preset-env": "^7.24.7",
+    "@babel/preset-react": "^7.24.7",
+    "babel-loader": "^9.1.3",
+    "css-loader": "^7.1.2",
+    "node-sass": "^9.0.0",
+    "sass-loader": "^14.2.1",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.92.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}

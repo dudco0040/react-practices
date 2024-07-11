@@ -1,0 +1,15 @@
+{
+  "name": "ex01",
+  "version": "1.0.0",
+  "main": "dev-server.js",
+  "scripts": {
+    "test": "node dev-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "express": "^4.19.2"
+  }
+}

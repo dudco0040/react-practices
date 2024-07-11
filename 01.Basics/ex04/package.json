@@ -1,0 +1,22 @@
+{
+  "name": "ex04",
+  "version": "1.0.0",
+  "main": "webpack.config.js",
+  "scripts": {
+    "start": "npx webpack serve --progress",
+    "build": "npx webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "css-loader": "^7.1.2",
+    "node-sass": "^9.0.0",
+    "sass-loader": "^14.2.1",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.92.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
+  }
+}
