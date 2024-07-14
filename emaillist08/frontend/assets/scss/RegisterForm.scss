@@ -1,12 +1,11 @@
 :global(#App){
 
-    .RegisterForm  {
+    .Resister_Form  {
         width: 100%;
         height: 50px;
         position: relative;
 
-        input[type="text"],
-        input[type="submit"] {
+        input[type="text"], input[type="submit"] {
             display: block;
             position:absolute;
             outline: none;

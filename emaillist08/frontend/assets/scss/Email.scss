@@ -1,4 +1,4 @@
-.Emaillist li {
+._Email {
     position: relative;
     background: #fff;
     width: 298px;
@@ -34,6 +34,7 @@
         &:before {
             content:'X'
         }
+
         &:hover, &:visited, &:active {
             text-decoration: none;
             color: #fff;
