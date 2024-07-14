@@ -10,7 +10,7 @@ function Emaillist(props) {
     ];
 
     return (
-        <ul className='Email_List'>
+        <ul className='Emaillist'>
             {emails.map(e=> <Email key={e.no} name={e.name} email={e.email} />)}
         </ul>
     );

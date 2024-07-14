@@ -2,7 +2,7 @@ import React from 'react';
 
 function SearchBar(props) {
     return (
-        <div className='Search_Bar'>
+        <div className='Searchbar'>
             <input type='text' placeholder='찾기'/>
         </div>
     );

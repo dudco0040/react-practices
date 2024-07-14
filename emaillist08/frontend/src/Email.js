@@ -2,7 +2,7 @@ import React from 'react';
 
 function Email({no,name,email}) {
     return (
-        <li>
+        <li className={email}>
             {name}
             <br/>
             {email}

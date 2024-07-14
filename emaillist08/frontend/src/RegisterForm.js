@@ -2,7 +2,7 @@ import React from 'react';
 
 function RegisterForm(props) {
     return (
-        <form className='Register_Form'>
+        <form className='RegisterForm'>
             <input type='text' name='firstName' placeholder='성' className='InputFirstName' />
             <input type='text' name='lastName' placeholder='이름' className='InputLastName' />
             <input type='text' name='email' placeholder='이메일' className='InputEmail' />
