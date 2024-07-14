@@ -36,8 +36,8 @@ ul, ol {
     position: relative;
 }
 
-.Register_Form input[type="text"],
-.Register_Form input[type="submit"] {
+.RegisterForm input[type="text"],
+.RegisterForm input[type="submit"] {
     display: block;
     position:absolute;
     outline: none;
@@ -46,25 +46,25 @@ ul, ol {
     margin-bottom: 10px;
 }
 
-.Register_Form .InputFirstName {
+.RegisterForm .InputFirstName {
     left: 0;
     top: 0;
     width:80px;
 }
 
-.Register_Form .InputLastName {
+.RegisterForm .InputLastName {
     top: 0;
     left: 92px;
     width: 145px;
 }
 
-.Register_Form .InputEmail {
+.RegisterForm .InputEmail {
     left:0;
     top: 27px;
     width: 237px;
 }
 
-.Register_Form input[type="submit"] {
+.RegisterForm input[type="submit"] {
     top: 0;
     right: 0;
     width: 50px;
@@ -76,23 +76,23 @@ ul, ol {
     cursor: pointer;
 }
 
-.Register_Form input[type="submit"]:hover {
+.RegisterForm input[type="submit"]:hover {
      background-color: #eee;
 }
 
-.SearchBar {
+.Searchbar {
     width: 100%;
     text-align: left;
     padding: 5px 0 8px;
 }
 
-.Search_Bar input {
+.Searchbar input {
     width: 288px;
     border: 1px solid #d9d9d9;
     padding: 5px;
 }
 
-.Search_Bar input{
+.Searchbar input{
     outline: none;
 }
 
@@ -102,7 +102,7 @@ ul, ol {
     border-top: 2px solid #c9c9c9;
 }
 
-.Email_List li {
+.Emaillist li {
     position: relative;
     background: #fff;
     width: 298px;
@@ -113,16 +113,16 @@ ul, ol {
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
 }
 
-.Email_List li h4 {
+.Emaillist li h4 {
     padding: 5px 0;
 }
 
-.Email_List li span {
+.Emaillist li span {
     display: block;
     padding: 0 0 5px 0;
 }
 
-.Email_List li a {
+.Emaillist li a {
     position: absolute;
     width: 10px;
     border: 1px solid #e5e5e5;
@@ -137,10 +137,10 @@ ul, ol {
     padding-top: 2px;
 }
 
-.Email_List li a:before {
+.Emaillist li a:before {
     content:'X'
 }
-.Email_List li a:hover, a:visited, a:active {
+.Emaillist li a:hover, a:visited, a:active {
     text-decoration: none;
     color: #fff;
 }
