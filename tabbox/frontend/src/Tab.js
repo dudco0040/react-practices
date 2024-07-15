@@ -1,9 +1,10 @@
 import React from 'react';
 import {_Tab} from './assets/scss/Tab.scss';
 
-function Tab({no, name, activate}) {
+function Tab({no, name, active, selectTab}) {
     return (
-        <li className={[_Tab, (activate?"active":"")].join(' ')}>
+        <li className={[_Tab, (active ? "active":"")].join(' ')}
+        onClick={selectTab}>
             {name}
         </li>
     );

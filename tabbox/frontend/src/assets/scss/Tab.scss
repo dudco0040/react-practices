@@ -12,7 +12,7 @@
 	background-color: #ccc;
 	cursor: pointer;
 
-    &.active {
+    &:global(.active) {
         background-color: #fc6;
     }
 

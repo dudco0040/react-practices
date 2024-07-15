@@ -1,10 +1,10 @@
 import React from 'react';
 import {Tab_View} from './assets/scss/TabView.scss';
 
-function TabView() {
+function TabView({contents}) {
     return (
         <div className={Tab_View}>
-            탭 뷰입니다.
+            {contents}
         </div>
     );
 }
