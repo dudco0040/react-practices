@@ -1,12 +1,12 @@
 import React from 'react';
 import Card from './Card';
 
-function CartList({status}) {
+function CartList({status, Title}) {
     // console.log(status[0].status);
 
     return (
         <div className='Card_List'>
-            <h1>{status[0].status}</h1>
+            <h1>{Title}</h1>
             {
                 status.map(status => 
                     <Card 
