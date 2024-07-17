@@ -1,13 +1,15 @@
 @charset "utf-8";
 
 html {
-    margin: 0;
-    padding: 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizelegibility;
-    letter-spacing: -0.25px;
-
+    * {
+        margin: 0;
+        padding: 0;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizelegibility;
+        letter-spacing: -0.25px;
+    }
+    
     ul, ol, dl {
         list-style-type: none;
     }
