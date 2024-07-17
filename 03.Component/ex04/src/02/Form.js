@@ -2,57 +2,50 @@ import React, {useState} from 'react';
 import './assets/Form.css';
 
 export default function Form() {
-
-    const[name, setName] =  useState(""); 
-    const[email, setEmail] = useState(""); 
-    const[b, setB] = useState(false);
-    // const[validEmail, ] = useState(false);
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [validEmail, setValidEmail] = useState(false);
 
     return (
         <form id="joinForm" name="joinForm" method="post" action="/do/not/post">
             <label htmlFor="name">이름</label>
-            <input id="name"
-             name="name"
-              value={name}
-               type="text"
-                autoComplete="off" 
-                onChange={(e => {
-                   //  console.log("--->" + e.target.value);
-                    // 10자 제한 
-
-                    setName(e.target.value.substr(0,10)); 
-                    
-                })}
-                />
+            <input
+                id="name"
+                name="name"
+                value={name}
+                type="text"
+                autoComplete="off"
+                onChange={e => {
+                    // console.log("--->" + e.target.value);
+                    // 10자 제한
+                    setName(e.target.value.substring(0, 10));
+                }}/>
 
             <label htmlFor="email">이메일</label>
-            <input id="email"
-             name="email"
-              type="text"
-               autoComplete="off"
-               value={email}
-               onChange={ e=> {
-                    setEmail(e.target.value); 
-                    
-                    // check email format
-                    const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; 
-                    // re.test(e.target.value); 
-                    const validEmail = re.test(e.target.value);
-                }} />
-            
+            <input
+                id="email"
+                name="email"
+                type="text"
+                autoComplete="off"
+                value={email}
+                onChange={e => {
+                    setEmail(e.target.value);
 
+                    // check email format
+                    const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                    setValidEmail(re.test(e.target.value));
+                }}/>
             {
-                email === ''? 
+                email === '' ?
                     null:
-                    validEmail ? 
-                    <b>O</b> : <b>X</b>
+                    validEmail ?
+                        <b>O</b>:
+                        <b>X</b>
             }
-            
+
 
             <label htmlFor="password">패스워드</label>
             <input id="password" name="password" type="password" autoComplete="off" />
-            <b>X</b>
-            
 
             <fieldset>
                 <legend>성별</legend>
