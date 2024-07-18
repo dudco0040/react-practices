@@ -1,7 +1,7 @@
 import React from 'react';
 import {Search_Bar} from '../assets/scss/SearchBar.scss';
 
-function SearchBar(props) {
+function SearchBar({fetchEmails}) {
     return (
         <div className={Search_Bar}>
             <input 

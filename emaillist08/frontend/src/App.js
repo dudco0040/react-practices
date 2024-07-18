@@ -75,7 +75,7 @@ function App() {
 
     const fetchEmails = async (keyword) => {
         try{
-            const response = await fetch(`/api?kw=${keyword ? keyword : ''}`, {  //이 경로로 
+            const response = await fetch(`/api?kw=${keyword ? keyword : ''}`, {  // 검색(keyword) & 불러오기 
                 method: 'get',
                 headers: {
                     'Accept': 'application/json',
