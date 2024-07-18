@@ -8,7 +8,7 @@ function App() {
     const [emails, setEmails] = useState(null);
 
     const addEmail = async (email) => {
-        console.log(email);
+        console.log("insert: ", email);
 
         try{
             const response = await fetch('api', {
@@ -38,6 +38,40 @@ function App() {
         }
 
     };
+
+
+    const deleteEmail = async (no) => {
+        console.log("delete: ", no);
+
+        try{
+            const response = await fetch(`api/${no}`, {
+                method: 'delete',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            });
+            
+            if(!response.ok) {
+                throw new Error(`${response.status} ${response.statusText}`);
+            }
+
+            const json = await response.json();
+
+            if(json.result !== 'success') {
+                throw new Error(json.message);
+            }
+
+            
+            // 이메일 목록에서 삭제된 이메일을 제거
+            setEmails(emails.filter(email => email.no !== no));
+            
+
+        } catch(err) {
+            console.error(err);
+        }
+
+       };
 
     const fetchEmails = async (keyword) => {
         try{
@@ -69,7 +103,8 @@ function App() {
             console.error(err);
         }
 
-    }
+    };
+
     useEffect(() =>{
         fetchEmails();
     },[]);
@@ -78,7 +113,7 @@ function App() {
         <div id={'App'}>
             <RegisterForm addEmail={addEmail}/>
             <SearchBar fetchEmails={fetchEmails}/>
-            <Emaillist emails={emails} />
+            <Emaillist emails={emails} deleteEmail={deleteEmail}/>
         </div>
     );
 }

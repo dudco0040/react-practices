@@ -36,4 +36,12 @@
 			]]>		
 		</selectKey>
 	</insert>
+	
+	<delete id="delete" parameterType="emaillistvo">
+		<![CDATA[
+			delete 
+			from emaillist 
+			where no = #{no}		
+		]]>
+	</delete>
 </mapper>
