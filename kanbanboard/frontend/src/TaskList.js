@@ -1,7 +1,8 @@
 import React from 'react';
 import Task from './Task';
+// import './assets/scss/TaskList.scss';
 
-function TaskList({tasks}) {
+function TaskList({tasks = []}) {  // task 가 없는 경우, default를 빈 배열로 설정 
     console.log(tasks);
 
     return (

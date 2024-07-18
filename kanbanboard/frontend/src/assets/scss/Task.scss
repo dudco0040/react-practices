@@ -1,3 +1,7 @@
 /* Task */
-._Task:first-child  { margin-top: 10px; padding-top: 10px; border-top: dashed 1px #ddd; }
-.Task_Remove:after  { display: inline-block; color: #d66; content: '✖'; }
+._Task{
+
+    &:first-child  { margin-top: 10px; padding-top: 10px; border-top: dashed 1px #ddd; }
+    &:after  { display: inline-block; color: #d66; content: '✖'; }
+}
+

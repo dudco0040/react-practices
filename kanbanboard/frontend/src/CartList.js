@@ -1,8 +1,10 @@
 import React from 'react';
 import Card from './Card';
+// import './assets/scss/CardList.scss';
 
 function CartList({status, Title}) {
-    // console.log(status[0].status);
+    console.log("===Cardlist.js 데이터 전달 확인===");
+    console.log(status);
 
     return (
         <div className='Card_List'>

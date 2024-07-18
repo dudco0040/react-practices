@@ -1,33 +1,65 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import CardList from './CartList';
 import './assets/css/App.css';
-import data from './assets/json/data.js';
+// import data from './assets/json/data.js';
+// import './assets/scss/KanbanBoard.scss';
 
 function KanbanBoard() {
-    // const _toDo = data.filter(d => {
+    const [card, setCard] = useState(null);
+
+    // load cardlist (fetchCard)
+    const fetchCard = async () => {
+        try {
+            const response = await fetch('/api', {
+                method: 'get', // GET 메서드로 요청
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: null
+            });
+            
+            if(!response.ok) {
+                throw new Error(`${response.status} ${response.statusText}`);
+            }
+
+            const json = await response.json();
+
+            if(json.result !== 'success') {
+                throw new Error(json.message);
+            }
+
+            console.log("===response(JSON)===");
+            console.log(response);
+            console.log(json.data);
+
+            setCard(json.data);
+        } catch(err) {
+            console.error(err);
+        }
+    };
+
+    useEffect(() =>{
+        fetchCard();
+    },[]);
+    
+
+    // const _toDo = card.filter(d => {
     //     return d.status === "ToDo";
     // });
-
-    // const _doing = data.filter(d => {
-    //     return d.status === "Doing";
-    // });
-
-    // const _done = data.filter(d => {
-    //     return d.status === "Done";
-    // });
-
+    
     // console.log(_toDo);
-    // console.log("----");
-    // console.log(_doing);
-    // console.log("----");
-    // console.log(_done);
-    // console.log("----");
+
 
     return (
         <div className='Kanban_Board'> 
-            <CardList status={data.filter(d => d.status === "ToDo")} Title={"ToDo"} />
-            <CardList status={data.filter(d => d.status === "Doing")}  Title={"Doing"} />
-            <CardList status={data.filter(d => d.status === "Done")}  Title={"Done"} />
+        {card && (
+            <>
+                <CardList status={card.filter(d => d.status === "ToDo")} Title={"ToDo"} />
+                <CardList status={card.filter(d => d.status === "Doing")}  Title={"Doing"} />
+                <CardList status={card.filter(d => d.status === "Done")}  Title={"Done"} />
+            </>
+            )}
         </div>
     );
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+// import './assets/scss/Task.scss';
 
 function Task({name, done}) {
     // console.log(name);
