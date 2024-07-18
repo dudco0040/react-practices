@@ -29,15 +29,19 @@
         font-weight: bold;
         text-align: center;
         line-height: 8px;
-        padding-top: 2px;
+        padding: 3px 2px 4px;
     
         &:before {
             content:'X'
         }
 
-        &:hover, &:visited, &:active {
+        &:visited, &:active {
             text-decoration: none;
             color: #fff;
+        }
+
+        &:hover {
+            background-color: #cfcfcf;
         }
     }
 

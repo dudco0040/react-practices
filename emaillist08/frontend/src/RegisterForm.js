@@ -1,9 +1,18 @@
 import React from 'react';
 import {Resister_Form, InputFirstName, InputLastName, InputEmail} from '../assets/scss/RegisterForm.scss';
 
-function RegisterForm(props) {
+function RegisterForm({addEmail}) {
     return (
-        <form className={Resister_Form}>
+        <form 
+            className={Resister_Form}
+            onSubmit={(e) =>{
+                e.preventDefault();
+                addEmail({
+                    firstName: e.target.firstName.value,
+                    lastName: e.target.lastName.value,
+                    email: e.target.email.value
+                });
+            }}>
             <input type='text' name='firstName' placeholder='성' className={InputFirstName} />
             <input type='text' name='lastName' placeholder='이름' className={InputLastName} />
             <input type='text' name='email' placeholder='이메일' className={InputEmail} />

@@ -9,7 +9,7 @@ import lombok.ToString;
 @ToString
 public class EmaillistVo {
 	private Long no;
-	private String firstNmae;
-	private String lastNmae;
+	private String firstName;
+	private String lastName;
 	private String email;
 }
