@@ -10,38 +10,38 @@ function App() {
     const addEmail = async (email) => {
         console.log(email);
 
-        // try{
-        //     const response = await fetch('api', {
-        //         method: 'get',
-        //         headers: {
-        //             'Accept': 'application/json',
-        //             'Content-Type': 'application/json'
-        //         },
-        //         body: JSON.stringify(email)
-        //     });
+        try{
+            const response = await fetch('api', {
+                method: 'post',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(email)
+            });
             
-        //     if(!response.ok) {
-        //         throw new Error(`${response.status} ${response.statusText}`);
-        //     }
+            if(!response.ok) {
+                throw new Error(`${response.status} ${response.statusText}`);
+            }
 
-        //     const json = await response.json();
+            const json = await response.json();
 
-        //     if(json.result !== 'success') {
-        //         throw new Error(json.message);
-        //     }
+            if(json.result !== 'success') {
+                throw new Error(json.message);
+            }
 
             
-        //     setEmails([json.data, ...emails]); // 새 배열로 세팅~
+            setEmails([json.data, ...emails]); // 새 배열로 세팅~
 
-        // } catch(err) {
-        //     console.error(err);
-        // }
+        } catch(err) {
+            console.error(err);
+        }
 
     };
 
     const fetchEmails = async (keyword) => {
         try{
-            const response = await fetch(`/api?kw=${keyword ? keyword : ''}`, {
+            const response = await fetch(`/api?kw=${keyword ? keyword : ''}`, {  //이 경로로 
                 method: 'get',
                 headers: {
                     'Accept': 'application/json',
