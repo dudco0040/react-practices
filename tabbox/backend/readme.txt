@@ -8,6 +8,9 @@ Landing Server Example
     2)  빌드(서버 배포) 테스트 하기 
         # mvn -f tabbox/backend exec:exec clean package
         # java -Dspring.profiles.active=production -jar tabbox/backend/target/tabbox.jar 
+          java -Dspring.profiles.active=production -jar /root/.jenkins/workspace/tabbox/tabbox/backend/target/tabbox.jar
+        
+
 
 2. frontend
 
