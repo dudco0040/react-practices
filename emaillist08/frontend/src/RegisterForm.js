@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import {Resister_Form, InputFirstName, InputLastName, InputEmail} from '../assets/scss/RegisterForm.scss';
 
 function RegisterForm({addEmail}) {
+    const reform= useRef(null);
     return (
         <form 
+            ref={reform}
             className={Resister_Form}
             onSubmit={(e) =>{
                 e.preventDefault();
@@ -12,6 +14,7 @@ function RegisterForm({addEmail}) {
                     lastName: e.target.lastName.value,
                     email: e.target.email.value
                 });
+                reform.current.reset();
             }}>
             <input type='text' name='firstName' placeholder='성' className={InputFirstName} />
             <input type='text' name='lastName' placeholder='이름' className={InputLastName} />

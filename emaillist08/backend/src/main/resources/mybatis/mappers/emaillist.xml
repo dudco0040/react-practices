@@ -37,7 +37,7 @@
 		</selectKey>
 	</insert>
 	
-	<delete id="delete" parameterType="emaillistvo">
+	<delete id="delete" parameterType="long">
 		<![CDATA[
 			delete 
 			from emaillist 
