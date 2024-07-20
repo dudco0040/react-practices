@@ -2,7 +2,7 @@ import React from 'react';
 import Card from './Card';
 // import './assets/scss/CardList.scss';
 
-function CartList({status, Title, addTask}) {
+function CartList({status, Title}) {
     console.log("===Cardlist.js 데이터 전달 확인===");
     console.log(status);
 
@@ -19,7 +19,6 @@ function CartList({status, Title, addTask}) {
                         status={status.status}
                         // tasks={status.tasks}
 
-                        addTask={addTask}
                     />
                 )
 

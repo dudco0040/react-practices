@@ -24,6 +24,11 @@ public class TaskRepository {
 		return sqlSession.insert("task.insert", vo);
 	}
 
+	// Task: delete
+	public int delete(Long no) {
+		return sqlSession.delete("task.delete", no);
+	}
+
 
 	
 	// update
