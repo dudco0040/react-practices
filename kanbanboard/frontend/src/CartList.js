@@ -2,7 +2,7 @@ import React from 'react';
 import Card from './Card';
 // import './assets/scss/CardList.scss';
 
-function CartList({status, Title}) {
+function CartList({status, Title, addTask}) {
     console.log("===Cardlist.js 데이터 전달 확인===");
     console.log(status);
 
@@ -13,16 +13,17 @@ function CartList({status, Title}) {
                 status.map(status => 
                     <Card 
                         key={status.no}
+                        no={status.no}
                         title={status.title}
                         description={status.description}
                         status={status.status}
-                        tasks={status.tasks}
+                        // tasks={status.tasks}
+
+                        addTask={addTask}
                     />
                 )
 
             }
-            
-
             
 
         </div>

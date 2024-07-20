@@ -39,6 +39,46 @@ function KanbanBoard() {
         }
     };
 
+       // Task insert
+       const addTask = async (tasks) => {
+        console.log("insert: ", tasks);
+
+        try {
+            const response = await fetch('/api', {
+                method: 'post', // POST 메서드로 요청
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body:  JSON.stringify(tasks)
+            });
+            
+            if(!response.ok) {
+                throw new Error(`${response.status} ${response.statusText}`);
+            }
+
+            const json = await response.json();
+
+            if(json.result !== 'success') {
+                throw new Error(json.message);
+            }
+
+            console.log("=== addTask response(JSON)===");
+            console.log(response);
+            console.log(json.data);
+
+            setTasks(json.data);
+
+            setTasks([json.data, ...tasks]);
+
+        } catch(err) {
+            console.error(err);
+        }
+    };
+
+    
+
+
     useEffect(() =>{
         fetchCard();
     },[]);
@@ -55,7 +95,7 @@ function KanbanBoard() {
         <div className='Kanban_Board'> 
         {card && (
             <>
-                <CardList status={card.filter(d => d.status === "ToDo")} Title={"ToDo"} />
+                <CardList status={card.filter(d => d.status === "ToDo")} Title={"ToDo"} addTask={addTask} />
                 <CardList status={card.filter(d => d.status === "Doing")}  Title={"Doing"} />
                 <CardList status={card.filter(d => d.status === "Done")}  Title={"Done"} />
             </>

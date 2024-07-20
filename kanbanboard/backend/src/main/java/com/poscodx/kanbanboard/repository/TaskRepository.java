@@ -6,18 +6,27 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.poscodx.kanbanboard.vo.CardlistVo;
 import com.poscodx.kanbanboard.vo.TaskVo;
 
 @Repository
-public class CardlistRepository {
+public class TaskRepository {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	// Card: select all
-	public List<CardlistVo> findCard(){
-		return sqlSession.selectList("cardlist.findAll");
+	
+	// Task: select
+	public List<TaskVo> findTask(Long cardNo) {
+		return sqlSession.selectList("task.findAll", cardNo);
+	}
+	
+	// Task: insert
+	public int insert(TaskVo vo) {
+		return sqlSession.insert("task.insert", vo);
 	}
 
 
+	
+	// update
+	
+	// delete
 }
