@@ -13,8 +13,8 @@ public class LandingController {
 		return "index";
 	}
 	
-//	@GetMapping("favicon.ico")
-//	@ResponseBody
-//	public void returnNoFavivon() {
-//	}
+	@GetMapping("favicon.ico")
+	@ResponseBody
+	public void returnNoFavivon() {
+	}
 }

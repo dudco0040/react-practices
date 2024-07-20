@@ -18,12 +18,20 @@
 	</insert>
 	
 	<!-- task update -->
-	<update id="update" parameterType="taskvo">
+	<update id="update" parameterType="map">
 			<![CDATA[
-		
-				
+				update task
+				set done = #{done}
+				where no = #{no}
 			]]>
 	</update>
+	
+	<!-- task update(done) -->
+	<select id="selectDone" parameterType="long" resultType="string" >
+			<![CDATA[
+				select done from task where no = #{no}
+			]]>
+	</select>
 	
 	
 	<!-- task delete -->

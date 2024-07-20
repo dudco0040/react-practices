@@ -1,6 +1,7 @@
 package com.poscodx.kanbanboard.repository;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +30,12 @@ public class TaskRepository {
 		return sqlSession.delete("task.delete", no);
 	}
 
+	// Task: update
+	public int update(Long no, String updateDone) {
+		return sqlSession.update("task.update", Map.of("no", no, "done", updateDone));
+	}
 
-	
-	// update
-	
-	// delete
+	public String selectDone(Long no) {
+		return sqlSession.selectOne("task.selectDone", no);
+	}
 }

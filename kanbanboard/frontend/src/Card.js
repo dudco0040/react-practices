@@ -15,7 +15,7 @@ function Card({no, title, description, status}) {
     const[tasks, setTasks] = useState([]);
        
     
-    // load cardlist (fetchCard)
+    // Task: select 
     const fetchTask = async (cardNo) => {
         try {
             const response = await fetch(`/api/${cardNo}`, {
@@ -53,7 +53,7 @@ function Card({no, title, description, status}) {
 
 
 
-    // Task insert
+    // Task: insert
     const addTask = async (task) => {
         console.log("insert: ", task);
     
@@ -81,9 +81,7 @@ function Card({no, title, description, status}) {
             console.log(response);
             console.log(json.data);
     
-            // setTasks(json.data);
-    
-            setTasks([json.data, ...tasks]);
+            setTasks([...tasks, json.data]);
             fetchTask(no)
     
             } catch(err) {
@@ -92,6 +90,7 @@ function Card({no, title, description, status}) {
         };
 
     
+    // Task: delete
     const deleteTask = async (no) => {
         console.log("delete: ", no);
 
@@ -115,7 +114,6 @@ function Card({no, title, description, status}) {
             }
 
             
-            // 이메일 목록에서 삭제된 이메일을 제거
             setTasks(tasks.filter(task => task.no !== no));
             
 
@@ -124,6 +122,42 @@ function Card({no, title, description, status}) {
         }
 
     };
+
+
+    // Task: update
+    const updateTask = async (no) => {
+        console.log("update: ", no);
+
+        try{
+            const response = await fetch(`api/${no}`, {
+                method: 'put',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            });
+            
+            if(!response.ok) {
+                throw new Error(`${response.status} ${response.statusText}`);
+            }
+
+            const json = await response.json();
+
+            if(json.result !== 'success') {
+                throw new Error(json.message);
+            }
+
+            // fetchTask(no)
+            return true;
+
+        } catch(err) {
+            console.error(err);
+
+            return false;
+        }
+
+    };
+
  
 
 
@@ -132,7 +166,7 @@ function Card({no, title, description, status}) {
             <div className='Card_Title Card_Title_Open' onClick={()=> {setShow(!show)}}>{title}</div>
             <div className='Card_Details'>
                 {description}
-                {show ? <TaskList no={no} tasks={tasks} addTask={addTask} deleteTask={deleteTask} />:null}
+                {show ? <TaskList no={no} tasks={tasks} addTask={addTask} deleteTask={deleteTask} updateTask={updateTask} />:null}
                 
             </div>
         </div>

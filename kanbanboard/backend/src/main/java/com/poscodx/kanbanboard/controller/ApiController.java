@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,7 +30,7 @@ public class ApiController {
 	@Autowired
 	private TaskRepository taskRepository;
 
-	// Card & Task R
+	// Card R
 	@GetMapping("/api")
 	public ResponseEntity<JsonResult> read() {
 		log.info("Request[GET /api]");
@@ -72,6 +73,27 @@ public class ApiController {
 				.body(JsonResult.success(vo));
 	}
 	
+	
+	@PutMapping("/api/{no}")
+	public ResponseEntity<JsonResult> update(@PathVariable("no") Long no) {
+		log.info("Request[UPDATE /api]:" + no);
+		
+		String done = taskRepository.selectDone(no);
+//		System.out.println("done " + done);
+		
+		String updateDone = "Y";
+		if (done.equals("Y")) {
+			updateDone = "N";
+		}
+//		System.out.println("updateDone " + updateDone);
+		taskRepository.update(no, updateDone);
+		
+		return ResponseEntity
+					.status(HttpStatus.OK)
+					.body(JsonResult.success(no));
+	}
+	
+	// Task D
 	@DeleteMapping("/api/{no}")
 	public ResponseEntity<JsonResult> delete(@PathVariable("no") Long no) {
 		log.info("Request[DELETE /api]:" + no);
