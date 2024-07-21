@@ -15,6 +15,9 @@
 			insert into task
 			values(null, #{name}, #{done}, #{cardNo})
 		]]>
+		<selectKey keyProperty="no" resultType="long" order="AFTER">
+			select last_insert_id()
+		</selectKey>
 	</insert>
 	
 	<!-- task update -->

@@ -82,7 +82,7 @@ function Card({no, title, description, status}) {
             console.log(json.data);
     
             setTasks([...tasks, json.data]);
-            fetchTask(no)
+            // fetchTask(no)
     
             } catch(err) {
                 console.error(err);
