@@ -1,7 +1,5 @@
 package com.poscodx.kanbanboard.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.poscodx.kanbanboard.dto.JsonResult;
 import com.poscodx.kanbanboard.repository.CardlistRepository;
 import com.poscodx.kanbanboard.repository.TaskRepository;
-import com.poscodx.kanbanboard.vo.CardlistVo;
 import com.poscodx.kanbanboard.vo.TaskVo;
 
 import lombok.extern.slf4j.Slf4j;
@@ -30,38 +27,35 @@ public class ApiController {
 	@Autowired
 	private TaskRepository taskRepository;
 
-	// Card R
+	// Card: read
 	@GetMapping("/api")
 	public ResponseEntity<JsonResult> read() {
 		log.info("Request[GET /api]");
-		List<CardlistVo> cardlist = cardlistRepository.findCard();
 		
-		System.out.println("====cardlist======");
-		System.out.println(cardlist);
+//		List<CardlistVo> cardlist = cardlistRepository.findCard();
+//		System.out.println("cardlist: " + cardlist);
 		
 		return ResponseEntity
 					.status(HttpStatus.OK)
-					.body(JsonResult.success(cardlist));
+					.body(JsonResult.success(cardlistRepository.findCard()));
 	}
 	
-	// Task R
+	// Task: read
 	@GetMapping("/api/{cardNo}")
 	public ResponseEntity<JsonResult> read2(@PathVariable("cardNo") Long cardNo) {
 		log.info("Request[GET /api]");
-		System.out.println("*** " + cardNo);
-		List<TaskVo> tasklist = taskRepository.findTask(cardNo);
 		
-		System.out.println("====tasklist======");
-		System.out.println(tasklist);
+//		List<TaskVo> tasklist = taskRepository.findTask(cardNo);
+//		System.out.println("tasklist: " + tasklist);
 		
 		
 		return ResponseEntity
 					.status(HttpStatus.OK)
-					.body(JsonResult.success(tasklist));
+					.body(JsonResult.success(taskRepository.findTask(cardNo)));
 	}
 	
 	
-	// Task C
+	// Task: add
 	@PostMapping("/api")
 	public ResponseEntity<JsonResult> create(@RequestBody TaskVo vo){
 		log.info("Request[POST /api]:" + vo);
@@ -73,27 +67,19 @@ public class ApiController {
 				.body(JsonResult.success(vo));
 	}
 	
-	
-	@PutMapping("/api/{no}")
-	public ResponseEntity<JsonResult> update(@PathVariable("no") Long no) {
-		log.info("Request[UPDATE /api]:" + no);
+	// Task: update
+	@PutMapping("/api/update")
+	public ResponseEntity<JsonResult> update(@RequestBody TaskVo vo) {
+		log.info("Request[UPDATE /api]:" + vo.getNo());
 		
-		String done = taskRepository.selectDone(no);
-//		System.out.println("done " + done);
-		
-		String updateDone = "Y";
-		if (done.equals("Y")) {
-			updateDone = "N";
-		}
-//		System.out.println("updateDone " + updateDone);
-		taskRepository.update(no, updateDone);
+		taskRepository.update(vo.getNo(), vo.getDone());
 		
 		return ResponseEntity
 					.status(HttpStatus.OK)
-					.body(JsonResult.success(no));
+					.body(JsonResult.success(vo));
 	}
 	
-	// Task D
+	// Task: delete
 	@DeleteMapping("/api/{no}")
 	public ResponseEntity<JsonResult> delete(@PathVariable("no") Long no) {
 		log.info("Request[DELETE /api]:" + no);

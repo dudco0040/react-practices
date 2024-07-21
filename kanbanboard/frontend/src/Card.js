@@ -125,16 +125,17 @@ function Card({no, title, description, status}) {
 
 
     // Task: update
-    const updateTask = async (no) => {
-        console.log("update: ", no);
+    const updateTask = async (task) => {
+        console.log("update: ", task);
 
         try{
-            const response = await fetch(`api/${no}`, {
+            const response = await fetch(`api/update`, {
                 method: 'put',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
-                }
+                },
+                body:  JSON.stringify(task)
             });
             
             if(!response.ok) {
@@ -147,13 +148,15 @@ function Card({no, title, description, status}) {
                 throw new Error(json.message);
             }
 
-            // fetchTask(no)
-            return true;
+            console.log(response);
+            console.log(json.data);
+            fetchTask(no)
+            // return true;
 
         } catch(err) {
             console.error(err);
 
-            return false;
+            // return false;
         }
 
     };

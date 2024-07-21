@@ -26,14 +26,6 @@
 			]]>
 	</update>
 	
-	<!-- task update(done) -->
-	<select id="selectDone" parameterType="long" resultType="string" >
-			<![CDATA[
-				select done from task where no = #{no}
-			]]>
-	</select>
-	
-	
 	<!-- task delete -->
 	<delete id="delete" parameterType="long">
 		<![CDATA[

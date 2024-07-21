@@ -6,6 +6,5 @@
 	<select id="findAll" resultType="cardlistvo">
 		select * from card;
 	</select>
-
 	
 </mapper>
